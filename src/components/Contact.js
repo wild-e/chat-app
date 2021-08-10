@@ -1,26 +1,36 @@
-import './Contact.css';
+import './contact.css';
+import PropTypes from 'prop-types';
 
-function Contact() {
+function Contact(props) {
   return (
     <div className="Contact">
         <img
             className='avatar'
-            src={url}
-            alt={name}
+            src={props.url}
+            alt={props.name}
         />    
         <div>
-            <h4 className="name">{name}</h4>
-            <div className="status">
-                <span className="status-online"></span>
-                <p className="status-text">{online ? 'is online' : 'is offline'}</p>
-            </div>
+            <h4 className="name">{props.name}</h4>
+            {props.online ? 
+              <div className="status">
+                  <span className="status-online"></span>
+                  <p className="status-text"> is online</p>
+              </div>
+            :
+              <div className="status">
+                  <span className="status-offline"></span>
+                  <p className="status-text"> is offline</p>
+              </div>
+            }
         </div>
     </div>
   );
 }
 
-let name = 'Aubree Hamilton';
-let url = 'https://randomuser.me/api/portraits/women/34.jpg';
-let online = true;
+Contact.propTypes = {
+  url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  online: PropTypes.bool,
+};
 
 export default Contact;
