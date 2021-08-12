@@ -1,3 +1,4 @@
+import React from "react";
 import './contact.css';
 import PropTypes from 'prop-types';
 
@@ -11,7 +12,7 @@ function Contact(props) {
         />    
         <div>
             <h4 className="name">{props.name}</h4>
-            {props.online ? 
+            {props.isOnline ? 
               <div className="status">
                   <span className="status-online"></span>
                   <p className="status-text"> is online</p>
@@ -30,7 +31,7 @@ function Contact(props) {
 Contact.propTypes = {
   url: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  online: PropTypes.bool,
+  isOnline: PropTypes.bool,
 };
 
 export default Contact;
